@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDB Data Viewer</title>
+</head>
+<body>
+
+
+    <h1>Meter Data Collection</h1>
+    <ul>
+        {% for data in meter_data %}
+            <li>
+                {{ data }}
+                {% if 'image_data' in data %}
+                    <img src="{{ url_for('image', image_id=data['_id']) }}" alt="Image" style="max-width: 400px; max-height: 400px;">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <button onclick="window.location.href='/export'">Export Data as ZIP</button>
+</body>
+</html>
